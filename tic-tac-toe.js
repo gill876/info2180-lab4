@@ -42,6 +42,17 @@ layout.addEventListener("load", function(){ //Waits until the CSS layout is load
         });
     });//end of applying attributes to each square
 
+    let button = document.querySelector("button");
+    button.addEventListener("click", function(){ 
+        squares.forEach(element => {
+            element.setAttribute("class","square");//Adds class with value square to each div
+            element.innerHTML = "";
+        });
+
+        messageBox.innerHTML = "Move your mouse over a square and click to play an X or an O.";
+        messageBox.classList.remove("you-won");
+    });
+
 });//end of waiting on the CSS stylesheet to load
 
 const winCheck = function(tile, box){
