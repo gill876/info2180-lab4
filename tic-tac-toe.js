@@ -1,5 +1,6 @@
 let layout = document.querySelector("link"); //Creates a variable to reference the link tag from the HTML
 let squares; 
+let alternate = false;
 
 layout.addEventListener("load", function(){ //Waits until the CSS layout is loaded
     squares = document.querySelector("#board");//Selects the div element with all the div section for the 3x3 squares
@@ -16,15 +17,16 @@ layout.addEventListener("load", function(){ //Waits until the CSS layout is load
 
     squares.forEach(element => {
         element.addEventListener("click", function(){
-            if (element.getAttribute("class") === "square X"){
-                element.setAttribute("class", "square O");
-                element.innerHTML = "O";
-            } else if (element.getAttribute("class") === "square O") {
-                element.setAttribute("class", "square X");
-                element.innerHTML = "X";
-            } else {
-                element.setAttribute("class", "square X");
-                element.innerHTML = "X";
+            if (!(element.getAttribute("class").includes("X") || element.getAttribute("class").includes("O"))) {//Checks whether the square has already been assigned X or O, if not it will be assigned
+                if (alternate === false) {
+                    element.setAttribute("class", "square X");
+                    element.innerHTML = "X";
+                    alternate = true;
+                } else if (alternate === true) {
+                    element.setAttribute("class", "square O");
+                    element.innerHTML = "O";
+                    alternate = false;
+                }
             }
             winCheck();
         });
