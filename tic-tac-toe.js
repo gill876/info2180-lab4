@@ -26,6 +26,7 @@ layout.addEventListener("load", function(){ //Waits until the CSS layout is load
                 element.setAttribute("class", "square X");
                 element.innerHTML = "X";
             }
+            winCheck();
         });
 
         element.addEventListener("mouseover", function(){
@@ -40,7 +41,10 @@ layout.addEventListener("load", function(){ //Waits until the CSS layout is load
             hover = hover.filter(item => item !== "hover");
             element.setAttribute("class", hover.join(" "));
         });
-    });
-    
-});
+    });//end of applying attributes to each square
 
+});//end of waiting on the CSS stylesheet to load
+
+const winCheck = function(){
+    console.log("hi")
+};
