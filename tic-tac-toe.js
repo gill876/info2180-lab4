@@ -1,6 +1,6 @@
 let layout = document.querySelector("link"); //Creates a variable to reference the link tag from the HTML
 let squares; 
-let alternate = false;
+let alternate = false;//Used to alternate the order of adding X or O to the squares
 let messageBox;
 
 layout.addEventListener("load", function(){ //Waits until the CSS layout is loaded
@@ -17,24 +17,24 @@ layout.addEventListener("load", function(){ //Waits until the CSS layout is load
             if (!(element.getAttribute("class").includes("X") || element.getAttribute("class").includes("O"))) {//Checks whether the square has already been assigned X or O, if not it will be assigned
                 if (alternate === false) {
                     element.setAttribute("class", "square X");
-                    element.innerHTML = "X";
+                    element.innerHTML = "X";//Changes the square to have an X
                     alternate = true;
                 } else if (alternate === true) {
                     element.setAttribute("class", "square O");
-                    element.innerHTML = "O";
+                    element.innerHTML = "O";//Changes the square to have an O
                     alternate = false;
                 }
             }
-            winCheck(squares, messageBox);
+            winCheck(squares, messageBox);//Checks all the time if there is a winner
         });
 
-        element.addEventListener("mouseover", function(){
+        element.addEventListener("mouseover", function(){//This function adds the hover value to the class tag
             let hover = element.getAttribute("class");
             hover+= " hover";
             element.setAttribute("class", hover);
         });
 
-        element.addEventListener("mouseleave", function(){
+        element.addEventListener("mouseleave", function(){//This function takes all the values in the class tag then traverse through and remove the hover value 
             let hover = element.getAttribute("class");
             hover = hover.split(" ");
             hover = hover.filter(item => item !== "hover");
@@ -75,7 +75,7 @@ const winCheck = function(tile, box){
     }
 };//end of winCheck function that checks if there are matching lines of X or O
 
-const displayMessage = function(mBox, xO){
+const displayMessage = function(mBox, xO){//This function changes the current message box to the congratulations message
     mBox.setAttribute("class", "you-won");
     mBox.innerHTML = `Congratulations! ${xO} is the Winner!`;
 };
