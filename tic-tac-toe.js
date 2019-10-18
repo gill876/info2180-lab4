@@ -1,9 +1,8 @@
-let layout = document.querySelector("link"); //Creates a variable to reference the link tag from the HTML
 let squares; 
 let alternate = false;//Used to alternate the order of adding X or O to the squares
 let messageBox;
 
-layout.addEventListener("load", function(){ //Waits until the CSS layout is loaded
+window.addEventListener("load", function(){ //Waits until the window is loaded
     squares = document.querySelector("#board");//Selects the div element with all the div section for the 3x3 squares
     squares = squares.querySelectorAll("div"); //Selects all sub div elements
     messageBox = document.querySelector("#status");//Selects the message box
